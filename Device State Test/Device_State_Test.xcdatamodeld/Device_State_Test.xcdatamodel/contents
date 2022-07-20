@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DeviceList" representedClassName="DeviceList" syncable="YES">
+        <attribute name="child_lock_f" optional="YES" attributeType="String"/>
+        <attribute name="child_lock_l" optional="YES" attributeType="String"/>
+        <attribute name="child_lock_m" optional="YES" attributeType="String"/>
+        <attribute name="config_buttons" optional="YES" attributeType="String"/>
+        <attribute name="config_dim" optional="YES" attributeType="String"/>
+        <attribute name="dest_button" optional="YES" attributeType="String"/>
+        <attribute name="deviceStateUid" optional="YES" attributeType="String"/>
+        <attribute name="deviceUid" optional="YES" attributeType="String"/>
+        <attribute name="f_speed" optional="YES" attributeType="String"/>
+        <attribute name="f_state" optional="YES" attributeType="String"/>
+        <attribute name="fan_dest" optional="YES" attributeType="String"/>
+        <attribute name="l_speed" optional="YES" attributeType="String"/>
+        <attribute name="l_state" optional="YES" attributeType="String"/>
+        <attribute name="master" optional="YES" attributeType="String"/>
+        <attribute name="modelNo" optional="YES" attributeType="String"/>
+        <attribute name="test_component" optional="YES" attributeType="String"/>
+        <attribute name="unique_id" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="L_State" representedClassName="L_State" syncable="YES">
+        <attribute name="l1" optional="YES" attributeType="String"/>
+        <attribute name="l2" optional="YES" attributeType="String"/>
+        <attribute name="l3" optional="YES" attributeType="String"/>
+        <attribute name="l4" optional="YES" attributeType="String"/>
+        <attribute name="l5" optional="YES" attributeType="String"/>
+        <attribute name="l6" optional="YES" attributeType="String"/>
+        <attribute name="l7" optional="YES" attributeType="String"/>
+        <attribute name="l8" optional="YES" attributeType="String"/>
+        <attribute name="l9" optional="YES" attributeType="String"/>
+        <attribute name="l10" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="DeviceList" positionX="-63" positionY="-18" width="128" height="284"/>
+        <element name="L_State" positionX="-63" positionY="108" width="128" height="179"/>
+    </elements>
 </model>
