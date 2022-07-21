@@ -10,20 +10,7 @@ import Alamofire
 import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
-    @IBOutlet weak var image_one: UIImageView!
-    
-    @IBOutlet weak var image_two: UIImageView!
-    
-    @IBOutlet weak var image_three: UIImageView!
-    
-    var fan_state : String!
-    var master : String!
-    
-    var fan1 : String!
-    var fan2 : String!
-    var master_text : String!
+   
     
     var test_array = [Any]()
     
@@ -42,9 +29,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var my_config_button = [String]()
     var my_fan_state = [String]()
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView_one: UITableView!
     
     
+    @IBOutlet weak var tableView_two: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +48,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         navigationController?.navigationBar.tintColor = .white
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView_one.delegate = self
+        tableView_one.dataSource = self
+        tableView_one.reloadData()
         
-        tableView.reloadData()
         
+        tableView_two.delegate = self
+        tableView_two.dataSource = self
+        tableView_two.reloadData()
     }
     
     
@@ -122,56 +113,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             DispatchQueue.main.async { [self] in
                 
                 
-                for fan in self.device_state_list_load {
                     
-                    self.fan_state = fan.f_state
-                    
-                    if self.fan_state == "N/A" {
-                        
-                        self.image_one.image = UIImage(named: "master")
-                        
-                        self.fan1 = "N/A"
-                        self.fan2 = "N/A"
-                        self.master_text = "MASTER"
-                        
-                        print("Fan:>",fan1!)
-                        print("Fan:>",fan2!)
-                        print(master_text!)
-                    }
-                    
-                    else if self.fan_state == "1" {
-                     
-                        self.image_one.image = UIImage(named: "Fan_1")
-                        self.image_two.image = UIImage(named: "master")
-                        
-                        self.fan1 = "FAN 1"
-                        self.fan2 = "N/A"
-                        self.master_text = "MASTER"
-                        
-                        print("Fan:>",fan1!)
-                        print("Fan:>",fan2!)
-                        print(master_text!)
-                        
-                        
-                    }
-                    
-                    else if self.fan_state == "2" {
-                     
-                        self.image_one.image = UIImage(named: "Fan_1")
-                        self.image_two.image = UIImage(named: "Fan_1")
-                        self.image_three.image = UIImage(named: "master")
-                        
-                        self.fan1 = "FAN 1"
-                        self.fan2 = "FAN 2"
-                        self.master_text = "MASTER"
-                        
-                        print("Fan:>",fan1!)
-                        print("Fan:>",fan2!)
-                        print(master_text!)
-                        
-                    }
-                    
-                }
+                
                 
             }
         }
@@ -265,7 +208,35 @@ extension ViewController {
                         let separate_dest_button = dest_button.map(String.init)
                         let separate_config_dim = config_dim.map(String.init)
                         let separate_config_button = config_buttons.map(String.init)
-                        let separate_f_state = F_state.map(String.init)
+                        
+                        
+                        
+                        if F_state == "N/A" {
+                            
+                            
+                        }
+                        
+                        else if F_state == "1" {
+                            
+                            
+                            my_fan_state.append(F_state)
+                            
+                        }
+                        
+                        else {
+                            
+                            
+                            let separate_f_state = F_state.map(String.init)
+                            
+                            for Separate_F_State in separate_f_state {
+                                
+                                my_fan_state.append(Separate_F_State)
+                                
+                            }
+                            
+                            
+                            
+                        }
                         
                         for Separate_L_State in separate_l_state {
                             
@@ -295,19 +266,14 @@ extension ViewController {
                         }
                         
                         
-                        for Separate_F_State in separate_f_state {
-                            
-                            my_fan_state.append(Separate_F_State)
-                            
-                        }
                         
                    }
                     
                     self.DeleteDeviceDataFunc()
                     self.SaveData()
                     self.device_state_Fetch()
-                    self.tableView.reloadData()
-                    //                    self.second_table_view.reloadData()
+                    self.tableView_one.reloadData()
+                    self.tableView_two.reloadData()
                     
                 }
                 
@@ -333,10 +299,12 @@ extension ViewController {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return my_dest_button.count
+        return tableView == tableView_one ? my_dest_button.count: my_fan_state.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if tableView == tableView_one {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
         
@@ -385,22 +353,38 @@ extension ViewController {
         
         return cell
         
+        }
         
+        if tableView == tableView_two {
+            
+            let sec_cell = tableView.dequeueReusableCell(withIdentifier: "SecCell", for: indexPath) as! SecondTableViewCell
+            
+            
+            sec_cell.test_image_value = my_fan_state[indexPath.row]
+            
+            if sec_cell.test_image_value == "1" {
+                
+                sec_cell.Test_Image.image = UIImage(named: "Fan_1")
+                sec_cell.fan_label.text = "F"
+            }
+            
+            
+            return sec_cell
+            
+        }
         
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-        
-        
-        
-        cell.imagess.image = UIImage(systemName: "homepod")
-        
-        
-        self.tableView.deselectRow(at: indexPath, animated: true)
+       
+        self.tableView_one.deselectRow(at: indexPath, animated: true)
+        self.tableView_two.deselectRow(at: indexPath, animated: true)
     }
     
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180
+    }
 }

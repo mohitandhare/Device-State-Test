@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1ED9A020492FE51F7B2AF0F2 /* Pods_Device_State_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F45632F7CF9DFAE83251BF1 /* Pods_Device_State_Test.framework */; };
 		303CD9072889389D0010E410 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303CD9062889389D0010E410 /* SecondViewController.swift */; };
+		303CD92F28897F9C0010E410 /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303CD92E28897F9C0010E410 /* SecondTableViewCell.swift */; };
 		308D2F5828855BA000A4AA22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D2F5728855BA000A4AA22 /* AppDelegate.swift */; };
 		308D2F5A28855BA000A4AA22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D2F5928855BA000A4AA22 /* SceneDelegate.swift */; };
 		308D2F5C28855BA000A4AA22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D2F5B28855BA000A4AA22 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		303CD9062889389D0010E410 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		303CD92E28897F9C0010E410 /* SecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewCell.swift; sourceTree = "<group>"; };
 		308D2F5428855BA000A4AA22 /* Device State Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Device State Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		308D2F5728855BA000A4AA22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		308D2F5928855BA000A4AA22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				308D2F5928855BA000A4AA22 /* SceneDelegate.swift */,
 				308D2F5B28855BA000A4AA22 /* ViewController.swift */,
 				308D2F76288588B600A4AA22 /* TableViewCell.swift */,
+				303CD92E28897F9C0010E410 /* SecondTableViewCell.swift */,
 				30F844DE288812E200794C7D /* struct.swift */,
 				308D2F5D28855BA000A4AA22 /* Main.storyboard */,
 				303CD9062889389D0010E410 /* SecondViewController.swift */,
@@ -241,6 +244,7 @@
 				30F844DF288812E200794C7D /* struct.swift in Sources */,
 				30F844E3288818E400794C7D /* L_State+CoreDataProperties.swift in Sources */,
 				308D2F7528855E8700A4AA22 /* DeviceList+CoreDataProperties.swift in Sources */,
+				303CD92F28897F9C0010E410 /* SecondTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
