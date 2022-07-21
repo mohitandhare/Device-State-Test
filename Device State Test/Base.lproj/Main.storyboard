@@ -121,18 +121,27 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FgL-wn-4ue">
+                                                    <rect key="frame" x="60" y="23" width="334" height="4"/>
+                                                    <color key="progressTintColor" red="0.68206629799999996" green="0.39914532470000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </progressView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.17166277769999999" green="0.17541572450000001" blue="0.2124480903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstItem="FgL-wn-4ue" firstAttribute="leading" secondItem="uY6-vR-QcX" secondAttribute="trailing" constant="20" id="7QY-61-G6a"/>
                                                 <constraint firstItem="ten-gv-wqz" firstAttribute="leading" secondItem="pzU-HK-5cu" secondAttribute="leading" constant="10" id="MSQ-ef-aUz"/>
                                                 <constraint firstAttribute="bottom" secondItem="ten-gv-wqz" secondAttribute="bottom" constant="10" id="X3E-h8-9AR"/>
                                                 <constraint firstItem="uY6-vR-QcX" firstAttribute="top" secondItem="pzU-HK-5cu" secondAttribute="top" constant="10" id="Y6U-ZJ-vTp"/>
                                                 <constraint firstItem="uY6-vR-QcX" firstAttribute="leading" secondItem="pzU-HK-5cu" secondAttribute="leading" constant="10" id="YbP-ct-WyD"/>
+                                                <constraint firstAttribute="trailing" secondItem="FgL-wn-4ue" secondAttribute="trailing" constant="20" id="lOo-ea-QpN"/>
+                                                <constraint firstItem="FgL-wn-4ue" firstAttribute="top" secondItem="pzU-HK-5cu" secondAttribute="top" constant="23" id="rHY-Hh-4B5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="Test_Image" destination="uY6-vR-QcX" id="8XT-J8-izs"/>
                                             <outlet property="fan_label" destination="ten-gv-wqz" id="KxL-dB-qVL"/>
+                                            <outlet property="fan_progress_bar" destination="FgL-wn-4ue" id="1l5-Gq-Js8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

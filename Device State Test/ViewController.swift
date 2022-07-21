@@ -11,6 +11,9 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
+    @IBOutlet weak var fan_progress_bar: UIProgressView!
+    var fan_speed : String!
+    
     
     var test_array = [Any]()
     
@@ -28,6 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var my_config_dim = [String]()
     var my_config_button = [String]()
     var my_fan_state = [String]()
+    var my_fan_speed = [String]()
     
     @IBOutlet weak var tableView_one: UITableView!
     
@@ -44,7 +48,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         Get_Device_State()
         
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Fan", style: .done, target: self, action: #selector(FanButton))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(FanButton))
         
         navigationController?.navigationBar.tintColor = .white
         
@@ -61,11 +65,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @objc func FanButton() {
         
+        Get_Device_State()
         
-        let Navigate_To_Second_VC : SecondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
-        
-        
-        self.navigationController?.pushViewController(Navigate_To_Second_VC, animated: true)
     }
     
     //MARK: ===== SAVE TO CORE DATA =====
@@ -113,7 +114,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             DispatchQueue.main.async { [self] in
                 
                 
-                    
                 
                 
             }
@@ -171,15 +171,15 @@ extension ViewController {
                         let L_state = result["L_state"] as? String,
                         let L_speed = result["L_speed"] as? String,
                         let F_state = result["F_state"] as? String,
-                        let F_speed = result["F_speed"] as? String,
+                        let F_speed = result["F_speed"] as? String
                         
                             
-                            let l_state_test = result["L_state"] as? String
+//                            let l_state_test = result["L_state"] as? String
                             
                             
                             
                     {
-                        let separate = Array(l_state_test)
+//                        let separate = Array(l_state_test)
                         
                         let saveDeviceStateList = DeviceList(context: self.managedObjextContext)
                         
@@ -208,7 +208,7 @@ extension ViewController {
                         let separate_dest_button = dest_button.map(String.init)
                         let separate_config_dim = config_dim.map(String.init)
                         let separate_config_button = config_buttons.map(String.init)
-                        
+                        let separate_f_speed = F_speed.map(String.init)
                         
                         
                         if F_state == "N/A" {
@@ -234,6 +234,13 @@ extension ViewController {
                                 
                             }
                             
+                            
+                            
+                        }
+                        
+                        for Separate_F_Speed in separate_f_speed {
+                            
+                            my_fan_speed.append(Separate_F_Speed)
                             
                             
                         }
@@ -268,6 +275,7 @@ extension ViewController {
                         
                         
                    }
+                    
                     
                     self.DeleteDeviceDataFunc()
                     self.SaveData()
@@ -361,12 +369,39 @@ extension ViewController {
             
             
             sec_cell.test_image_value = my_fan_state[indexPath.row]
+            sec_cell.fan_speed = my_fan_speed[indexPath.row]
             
             if sec_cell.test_image_value == "1" {
                 
                 sec_cell.Test_Image.image = UIImage(named: "Fan_1")
                 sec_cell.fan_label.text = "F"
             }
+            
+            if sec_cell.fan_speed == "1" {
+                
+                sec_cell.fan_progress_bar.setProgress(0.250, animated: true)
+                
+            }
+            
+            else if sec_cell.fan_speed == "2" {
+                
+                sec_cell.fan_progress_bar.setProgress(0.500, animated: true)
+                
+            }
+            
+            else if sec_cell.fan_speed == "3" {
+                
+                sec_cell.fan_progress_bar.setProgress(0.750, animated: true)
+                
+            }
+            
+            else if sec_cell.fan_speed == "4" {
+                
+                sec_cell.fan_progress_bar.setProgress(0.1000, animated: true)
+                
+            }
+            
+            
             
             
             return sec_cell

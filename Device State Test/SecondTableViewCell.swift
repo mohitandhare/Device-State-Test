@@ -13,6 +13,9 @@ class SecondTableViewCell: UITableViewCell {
     
     var test_image_value : String!
     
+    @IBOutlet weak var fan_progress_bar: UIProgressView!
+    var fan_speed : String!
+    
     @IBOutlet weak var fan_label: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
